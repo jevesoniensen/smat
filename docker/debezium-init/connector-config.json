@@ -1,0 +1,28 @@
+{
+  "name": "smat-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.hostname": "smat-db",
+    "database.port": "5432",
+    "database.user": "admin",
+    "database.password": "admin",
+    "database.dbname": "smat",
+    "database.server.name": "smat-db-server",
+    "plugin.name": "pgoutput",
+    "table.include.list": "smat.outbox",
+    "topic.prefix": "smat",
+    "transforms": "outbox",
+    "transforms.outbox.type": "io.debezium.transforms.outbox.EventRouter",
+    "transforms.outbox.route.by.field": "aggregate_type",
+    "transforms.outbox.route.topic.replacement": "${routedByValue}",
+    "transforms.outbox.table.field.event.id": "id",
+    "transforms.outbox.table.field.event.payload": "payload",
+    "transforms.outbox.table.field.event.key": "aggregate_id",
+    "transforms.outbox.table.field.event.timestamp": "timestamp",
+    "transforms.outbox.table.fields.additional.placement": "aggregate_type:header:aggregate_type,type:header:type,id:header:outbox_id,aggregate_id:header:aggregate_id",
+    "transforms.outbox.table.expand.json.payload": "true",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false"
+  }
+}
+
