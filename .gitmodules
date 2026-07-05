@@ -1,0 +1,12 @@
+[submodule "smat-be"]
+	path = smat-be
+	url = git@github.com:jevesoniensen/smat-be.git
+[submodule "smat-db"]
+	path = smat-db
+	url = git@github.com:jevesoniensen/smat-db.git
+[submodule "smat-ui"]
+	path = smat-ui
+	url = git@github.com:jevesoniensen/smat-ui.git
+[submodule "smat-rg"]
+	path = smat-rg
+	url = git@github.com:jevesoniensen/smat-report-generator.git
